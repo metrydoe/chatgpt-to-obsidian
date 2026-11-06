@@ -1,50 +1,78 @@
-# ChatGPT → Obsidian
+# ChatGPT �� Obsidian
 
-Save the currently loaded ChatGPT conversation from Chrome as editable Obsidian
-Markdown, with TeX, code, local images and supported interactive components.
+[��Ӣ���� / Bilingual README](README.md) �� [Installation](docs/INSTALL.md) �� [Architecture](docs/ARCHITECTURE.md) �� [Contributing](CONTRIBUTING.md)
 
-[中文](README.md) · [Installation](docs/INSTALL.md) · [Architecture](docs/ARCHITECTURE.md)
+## Overview
 
-Experimental community project. The full installation currently targets
-**Windows, Google Chrome and Obsidian Desktop**. Extension **0.8.2**;
-Obsidian plugin **0.5.1**. Python **3.10+** is required. No model API key,
-Python packages or Node.js are needed for normal use.
+Save the currently loaded ChatGPT conversation from Chrome as editable Obsidian notes, including available TeX, complete code, local images and supported interactive components.
 
-## Install
+Experimental community project. The complete installation pipeline supports Windows 10/11, Google Chrome and Obsidian Desktop.
 
-1. Download/clone the whole project into a permanent directory.
-2. Open your target vault in Obsidian, then run from the project directory:
+Chrome extension **0.8.2**; Obsidian plugin **0.5.1**; requires Python **3.10+**.
 
-   ```powershell
-   python install.py --vault 'D:\Notes\MyVault'
-   ```
+Normal use requires only the Python standard library. No model API key, additional Python packages or Node.js is needed.
 
-3. Open `chrome://extensions/`, enable Developer mode and use **Load unpacked**
-   to select the project's `extension/` directory.
-4. Enable **ChatGPT Learning Widgets** in Obsidian's community plugin settings.
-5. Open a specific ChatGPT conversation and click the extension. Verify the
-   connected vault name, then archive. Load earlier messages first for long chats.
+## Features
 
-Notes, source archives, attachments and reports stay in your selected vault.
-There is no telemetry or project upload server. Capturing downloads resources
-from the active page and permitted image/resource sites. The background downloader
-omits credentials; same-origin page downloads may use the page session.
+Export questions and answers as native Markdown, retaining headings, lists, tables, TeX and fenced code blocks.
 
-## Scope
+Download accessible images, SVGs and dependencies locally and verify attachment SHA-256 hashes.
 
-The collector attempts to retrieve full documents from attached editors, rejects
-code whose completeness cannot be established, and checks saved file hashes.
-Supported source programs run locally with shared state between inline widgets.
-The DIL runtime is a local compatibility implementation, not the ChatGPT runtime.
+Read complete documents from CodeMirror, Monaco and Ace editors associated with the current page; stop archiving when code completeness cannot be established.
 
-This does not guarantee all account history, identical appearance or arbitrary
-JavaScript/iframe/canvas behavior. Unsupported components and unavailable assets
-are recorded as losses. File verification is separate from visual verification.
-The extension and plugin are distributed as source, not through application stores.
+Place supported source-program components inline as `chatgpt-widget` blocks, with shared state between views of the same program.
 
-## Development
+Keep source archives, reports and content-addressed snapshots, preserving user edits in existing readable notes.
 
-Node.js 20+ is needed only for development checks.
+Provide a converter for older whole-note player exports; preview by default and require explicit `--apply` to modify and back up notes.
+
+## Quick start
+
+**1.** Download the entire project into a permanent directory, such as `D:\Tools\chatgpt-to-obsidian`. Keep that directory after installation.
+
+**2.** Open your target vault in Obsidian, then run the command below from the project directory, replacing the example path with your vault path.
+
+```powershell
+python install.py --vault 'D:\Notes\MyVault'
+```
+
+**3.** Open `chrome://extensions/`, enable **Developer mode**, choose **Load unpacked**, and select the project��s **`extension`** subdirectory.
+
+**4.** Enable **ChatGPT Learning Widgets** in Obsidian��s **Settings �� Community plugins**.
+
+**5.** Open a specific ChatGPT conversation, click the extension, verify the connected vault name, then click **�鵵�� Obsidian** (*Archive to Obsidian*). Load earlier messages for long chats and keep the popup open while archiving.
+
+The current extension interface and generated filenames use Chinese. See the bilingual [installation guide](docs/INSTALL.md) for setup, updates, vault changes and troubleshooting. The extension and plugin are not listed in application stores.
+
+## Data and permissions
+
+Notes, source archives and attachments are stored in your selected local vault. The project has no telemetry, upload server or model API calls.
+
+Capture accesses the active ChatGPT page and image or dependency sites. Background downloads omit credentials; same-origin page downloads may use the page session.
+
+Core permissions are `activeTab`, `scripting` and `nativeMessaging`. Access to additional image sites is requested when needed.
+
+Supported native components exchange actions and state with isolated frames through a restricted message bridge. Source programs do not execute directly in the main Obsidian window.
+
+Do not publish `host/config.json`, `host/recovery/`, `recovery/`, `backups/`, `data.json` or personal archives. These runtime files are excluded by `.gitignore`.
+
+## Known limitations
+
+Capture covers loaded content in the current branch, not all account history. Changes to ChatGPT��s page structure may break capture.
+
+Identical appearance and complete migration of arbitrary JavaScript, iframes or canvas behavior are not guaranteed.
+
+The local DIL compatibility runtime supports a subset of components and is not the original ChatGPT runtime. Reports record unsupported components, expired images, external services and unresolved module dependencies.
+
+Scrollable code may be rejected when completeness cannot be proven. Missing source must be retrieved from the original conversation.
+
+Native Messaging requests are limited to 40 MB, individual attachments or archive JSON to 8 MB, and total attachments to 24 MB. The collector also applies dependency-resource limits.
+
+File verification establishes consistency with saved records. Visual appearance and interactive behavior still need to be checked in Obsidian.
+
+## Development and validation
+
+Development checks additionally require Node.js **20+**. Run the commands below from the repository root.
 
 ```powershell
 python build_plugin.py
@@ -52,8 +80,14 @@ python tools/check.py
 python -m unittest discover -s tests -v
 ```
 
-Tests use synthetic content and temporary Chrome profiles. Do not commit local
-configuration, recovery caches, plugin state, personal notes or source archives.
+After editing `plugin-src/main.js` or shared runtimes, rebuild `obsidian-plugin/main.js`. The bundle retains only the API dependency provided by Obsidian.
 
-MIT license. See [third-party notices](THIRD_PARTY_NOTICES.md) for bundled KaTeX.
-Independent project, not affiliated with OpenAI, Google or Obsidian.
+Browser tests use synthetic content and fresh temporary Chrome profiles, without reading personal browsing history or real conversations.
+
+To enable the optional [Windows CI example](docs/github-actions.example.yml), copy it to `.github/workflows/ci.yml` and commit it. It is not enabled automatically.
+
+## License
+
+Source code is licensed under the [MIT License](LICENSE). Bundled KaTeX and fonts retain their original license; see [third-party notices](THIRD_PARTY_NOTICES.md).
+
+Independent community project, not affiliated with OpenAI, Google or Obsidian. All included examples are synthetic.

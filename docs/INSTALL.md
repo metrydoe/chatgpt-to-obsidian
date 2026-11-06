@@ -1,67 +1,89 @@
-# 安装与维护
+# ��װ��ά�� / Installation and maintenance
 
-## 环境
+[README](../README.md) �� [�ܹ� / Architecture](ARCHITECTURE.md)
 
-- Windows 10/11，Google Chrome，Obsidian 桌面版（插件声明最低 1.5.0）。
-- Python 3.10+，`python --version` 能正常运行。
-- 项目目录建议使用简单路径，例如 `D:\Tools\chatgpt-to-obsidian`。启动器使用 Windows 系统代码页；如果路径包含系统代码页无法表达的字符，请换到简单路径。
-- Obsidian 目标库须已打开过，包含 `.obsidian` 目录。
+## ���� / Requirements
 
-完整接收链路目前没有 macOS、Linux、Edge 或移动端安装支持。`--plugin-only` 只复制插件文件，不提供这些平台的采集链路。
+| ���� | English |
+| --- | --- |
+| Windows 10/11��Google Chrome��Obsidian ����棻���������� Obsidian 1.5.0�� | Windows 10/11, Google Chrome and Obsidian Desktop. The plugin manifest requires Obsidian 1.5.0 or newer. |
+| Python 3.10+��ȷ�� `python --version` �����С� | Python 3.10+; verify that `python --version` works. |
+| ���齫��Ŀ���ڼ�·�������� `D:\Tools\chatgpt-to-obsidian`��������ʹ�� Windows ϵͳ����ҳ���޷������·���ַ���Ҫ���ü�·���� | Use a simple project path such as `D:\Tools\chatgpt-to-obsidian`. The launcher uses the Windows system code page; choose another path if its characters cannot be represented. |
+| Ŀ������� Obsidian �򿪹������� `.obsidian`������������·�ݲ�֧�� macOS��Linux��Edge ���ƶ��ˡ� | Open the target vault in Obsidian at least once so it contains `.obsidian`. The full receiving pipeline does not currently support macOS, Linux, Edge or mobile. |
+| `--plugin-only` ֻ���Ʋ���ļ�������Ϊ����ƽ̨�ṩ�����ɼ���·�� | `--plugin-only` copies plugin files only; it does not provide a complete capture pipeline for other platforms. |
 
-## 安装
+## ��װ / Installation
 
-1. 解压或克隆整个项目。以后 Chrome 会继续从这里加载扩展，本地通信注册也会引用这里。
-2. 打开 PowerShell，在项目目录运行：
+| ���� | English |
+| --- | --- |
+| **1.** ����������Ŀ����ѹ���̶�Ŀ¼������ `D:\Tools\chatgpt-to-obsidian`����װ����ԭĿ¼�� | **1.** Download the entire project into a permanent directory, such as `D:\Tools\chatgpt-to-obsidian`. Keep that directory after installation. |
+| **2.** �� Obsidian �д�Ŀ��⣬�ٴ���ĿĿ¼�����·������ʾ��·���滻����Ŀ�·���� | **2.** Open your target vault in Obsidian, then run the command below from the project directory, replacing the example path with your vault path. |
 
-   ```powershell
-   python install.py --vault 'D:\Notes\MyVault'
-   ```
+```powershell
+python install.py --vault 'D:\Notes\MyVault'
+```
 
-   不需要管理员权限。程序备份将被替换的插件文件和现有主机配置，安装到目标库的 `.obsidian/plugins/chatgpt-learning-widgets`，并写入当前用户的 Chrome Native Messaging 注册项。不会自动修改 Obsidian 的插件启用列表或覆盖 `data.json`。
+| ���� | English |
+| --- | --- |
+| ����Ҫ����ԱȨ�ޣ���װ��Ŀ��� `.obsidian/plugins/chatgpt-learning-widgets`�����Ǽǵ�ǰ�û��� Chrome Native Messaging � | No administrator privileges are required. The installer copies files into `.obsidian/plugins/chatgpt-learning-widgets` in the selected vault and registers Chrome Native Messaging for the current user. |
+| �滻ǰ���ݲ��������������ã����� `data.json` �͵�������������б��� | Existing plugin code and host configuration are backed up before replacement. `data.json` and the community-plugin enable list are preserved. |
+| ʡ�� `--vault` ʱ������ѡ��Ψһ��Ч�ĵ�ǰ�򿪿⣬�ٳ�������Ч�İ�װ���ã������ͬʱ��ʱ����ȷָ��·���� | Without `--vault`, the installer first selects the single valid currently open vault, then falls back to valid saved configuration. Specify a path explicitly when multiple vaults are open. |
 
-   省略 `--vault` 时先查找唯一有效的当前打开库，再尝试仍然有效的本地配置。多个库同时打开时必须显式指定路径。
+| ���� | English |
+| --- | --- |
+| **3.** �� Chrome �� `chrome://extensions/`�����á�������ģʽ�������������δ�������չ���򡱣�ѡ����Ŀ�� **`extension`** ��Ŀ¼�� | **3.** Open `chrome://extensions/`, enable **Developer mode**, choose **Load unpacked**, and select the project��s **`extension`** subdirectory. |
+| **4.** �� Obsidian������ �� ����������������� **ChatGPT Learning Widgets**�� | **4.** Enable **ChatGPT Learning Widgets** in Obsidian��s **Settings �� Community plugins**. |
+| **5.** �򿪾���� ChatGPT �Ի�������鵵��չ���˶ԡ������� �� ���������ٵ�����鵵�� Obsidian�������Ի��ȼ���������Ϣ���鵵�ڼ䱣�ֵ����򿪡� | **5.** Open a specific ChatGPT conversation, click the extension, verify the connected vault name, then click **�鵵�� Obsidian** (*Archive to Obsidian*). Load earlier messages for long chats and keep the popup open while archiving. |
+| ��չ��ǰ���������ɵ��ļ���ʹ�����ġ�������װ���������ƿ�͹����Ų��[��װָ��](INSTALL.md)����չ�Ͳ����δ�ϼ�Ӧ���̵ꡣ | The current extension interface and generated filenames use Chinese. See the bilingual [installation guide](INSTALL.md) for setup, updates, vault changes and troubleshooting. The extension and plugin are not listed in application stores. |
 
-3. 在 Chrome 地址栏输入 `chrome://extensions/`。开启开发者模式，点击“加载未打包的扩展程序”，选择 **`extension` 子目录**。
-4. 扩展名为 **ChatGPT → Obsidian**，当前版本 **0.8.2**。自带的公钥用于保持扩展 ID 稳定，并非私钥或访问令牌。
-5. 在 Obsidian“设置 → 第三方插件”启用 **ChatGPT Learning Widgets 0.5.1**。如出现受限模式提示，请先按 Obsidian 的正常流程允许社区插件。
-6. 点击 Chrome 扩展菜单，将归档扩展固定到工具栏。打开具体的 ChatGPT 对话后点击它，检查“已连接 · 库名”。
+| ���� | English |
+| --- | --- |
+| ��չ��Կ���ڹ̶���չ ID����ƥ�䱾��ͨ����Դ��������˽Կ��������ơ� | The extension��s public key keeps its ID stable for Native Messaging origin matching. It is not a private key or access token. |
+| ��Ҫʱ�� Obsidian ����������������������ɽ� Chrome �鵵��չ�̶����������� | Allow community plugins through Obsidian��s normal settings flow when needed. You can pin the Chrome archive extension to the toolbar. |
 
-## 归档
+## �鵵 / Archiving
 
-等待回答结束，加载需要的早期消息，点击“归档到 Obsidian”，归档期间保持弹窗打开。存在受跨域限制的图片时，扩展可按需申请对应图片网站权限。
+| ���� | English |
+| --- | --- |
+| �Ȼش���������������������Ϣ���ٵ�����鵵�� Obsidian�����鵵�ڼ䱣�ֵ����򿪡� | Wait for the answer to finish and load the earlier messages you need. Click **�鵵�� Obsidian** (*Archive to Obsidian*) and keep the popup open during capture. |
+| ����ͼƬ������Ҫ����ʾ��Ȩ��ӦͼƬ��վ�� | Cross-origin images may require granting access to the specific image site when prompted. |
+| ��������ⶥ��� `ChatGPT - ���� - ָ��.md`���Լ� `ChatGPT ѧϰ�鵵` �е�ԭ�������������պ� `�鵵����.json`����Щ�ǳ���ʵ��ʹ�õ������ļ����� | Output includes `ChatGPT - title - fingerprint.md` at the vault root and source data, assets, snapshots and `�鵵����.json` (*archive report*) under `ChatGPT ѧϰ�鵵` (*ChatGPT learning archives*). The latter Chinese names are the actual filenames used by the program. |
+| �ȿ����棬�ٺ˶Թ�ʽ���������һ�С�ͼƬ�ͽ���״̬����װ�����һ�δ�ɼ�����ʷ��ʧЧ��Դ�� | Read the report, then check formulas, the final code line, images and interactive state. Reinstallation cannot recover history that was never captured or expired resources. |
 
-保存结果包括库顶层的 `ChatGPT - 标题 - 指纹.md` 和 `ChatGPT 学习归档` 中的原件、附件、快照及报告。先查看报告，再核对公式、代码末尾、图片及交互状态。未加载历史或失效资源不能仅靠重新安装找回。
+## �������ƿ� / Updating or changing vaults
 
-## 升级或移库
+| ���� | English |
+| --- | --- |
+| ����Դ������� `python build_plugin.py --check`�� | After updating source files, run `python build_plugin.py --check`. |
+| �������� `python install.py --vault 'D:\Notes\NewVault'`������Ŀ����ʵ��·���� | Rerun `python install.py --vault 'D:\Notes\NewVault'`, substituting the actual target vault path. |
+| �� Chrome ��չ����ҳ���¼�����չ���� Obsidian �رպ����¿������������ | Reload the extension on Chrome��s extensions page, then disable and re-enable the Obsidian plugin. |
+| �滻ǰ�ļ���������Ŀ `backups/`����ͨ��������Ҫת���ɱʼǣ��ƿ��Ҫ�˶����ӿ����� | Replaced files are saved in the project��s `backups/` folder. Routine updates do not require converting older notes. Check the connected vault name after moving a vault. |
 
-1. 更新项目源码，运行 `python build_plugin.py --check`。
-2. 再次运行 `python install.py --vault '新的库路径'`。
-3. 在 Chrome 扩展管理页重新加载归档扩展。
-4. 在 Obsidian 关闭后重新开启交互插件。
+## ж����ع� / Uninstalling and rollback
 
-安装器保留插件状态并把替换前文件存到项目 `backups/`。不需要运行旧笔记迁移脚本来完成普通升级。移库后必须核对扩展显示的连接库名。
-
-## 卸载与回滚
+| ���� | English |
+| --- | --- |
+| �����·�������Ƴ�����Ŀ��ǰ�û��ı���ͨ��ע�ᡣ | Run the command below to remove only this project��s native host registration for the current user. |
 
 ```powershell
 python install.py --uninstall
 ```
 
-该命令仅移除本项目当前用户的本地通信注册，不删除笔记、插件文件或状态。在 Chrome 中移除扩展，在 Obsidian 设置中停用或卸载插件，即可结束使用。
-
-回滚前先停用插件，从 `backups/install-时间/plugin/` 复制备份代码回插件目录，保留现有 `data.json`。备份中的主机配置只适用于原机器和原路径；不要公开上传或直接复用到别人的电脑。
-
-## 故障排查
-
-| 现象 | 检查方法 |
+| ���� | English |
 | --- | --- |
-| 接收程序未就绪 | 确认 Python 可运行；重新执行带 `--vault` 的安装命令；查看安装输出是否报错 |
-| 连接到旧库 | 用当前真实库路径重新安装，重新打开扩展，核对显示库名 |
-| 找不到原交互验证用 Chrome | 该功能查找 Google Chrome 的标准安装目录；自定义位置安装的 Chrome 目前需要调整 `host/runtime_inspector.py` |
-| 代码不完整被阻止 | 等回答结束，加载完整代码；保存诊断；不要把当前可见行当成完整程序 |
-| 图片未保存 | 检查扩展提示的网站权限和报告中的具体原因；过期或不可访问图片需要原件 |
-| 交互块显示为代码 | 启用 Obsidian 插件；重新加载插件；确认对应归档附件还在原位置 |
-| 文件已保存但显示不同 | 文件校验不代表外观一致；检查报告中的未支持组件和资源 |
+| �ʼǡ�����ļ���״̬������Ҫֹͣʹ�ã����� Chrome �Ƴ���չ������ Obsidian ͣ�û�ж�ز���� | Notes, plugin files and state are preserved. To stop using the tool, remove the Chrome extension and disable or uninstall the Obsidian plugin in their respective settings. |
+| �ع�ʱ��ͣ�ò�����ٴ� `backups/install-ʱ��/plugin/` �ָ����룬���������� `data.json`�� | Before rollback, disable the plugin, restore its code from `backups/install-timestamp/plugin/`, and keep the current `data.json`. |
+| ������������ֻ������ԭ������ԭ·������Ҫ�����ϴ���ֱ�Ӹ��õ����˵ĵ��ԡ� | Backed-up host configuration is specific to the original computer and paths. Do not publish it or copy it directly to another person��s computer. |
 
-提交问题时请附版本、操作系统和脱敏后的报错，不要直接公开原对话、含令牌的资源地址或完整运行配置。
+## �����Ų� / Troubleshooting
+
+| ���� | English |
+| --- | --- |
+| **���ճ���δ������**ȷ�� Python �����У�����ִ�д� `--vault` �İ�װ������鿴������ | **Receiver not ready:** verify Python works, rerun installation with `--vault`, and inspect any error output. |
+| **���ӵ��ɿ⣺**�Ե�ǰ��ʵ��·�����°�װ�����´���չ���˶Կ����� | **Connected to an old vault:** reinstall with the current vault��s actual path, reopen the extension, and check the vault name. |
+| **�Ҳ�����֤�� Chrome��**������ұ�׼��װĿ¼���Զ��� Chrome λ��Ŀǰ����� `host/runtime_inspector.py`�� | **Chrome not found for validation:** the program checks standard installation directories. A custom Chrome location currently requires adjusting `host/runtime_inspector.py`. |
+| **���벻��������ֹ��**�Ȼش�����������������벢������ϣ���Ҫ�ѿɼ��е����������� | **Incomplete code blocked:** wait for the answer to finish, load the complete code and keep the diagnostic. Visible lines are not proof of the full program. |
+| **ͼƬδ���棺**�����վȨ���뱨��ԭ�򣻹��ڻ򲻿ɷ��ʵ�ͼƬ��Ҫԭ���� | **Image missing:** check site permissions and the report��s reason. Expired or inaccessible images require an original copy. |
+| **��������ʾΪ���룺**���ò����� Obsidian �����ȷ�Ϲ鵵��������ԭλ�á� | **Widget appears as code:** enable and reload the Obsidian plugin and verify that the source archive remains at the referenced path. |
+| **�ļ��ѱ��浫Ч����ͬ��**��鱨���е�δ֧���������Դ���ļ�У�鲻�������һ�¡� | **Saved files look different:** inspect unsupported components and missing resources in the report. File verification does not establish visual equivalence. |
+| �ύ�����븽�汾������ϵͳ��������������Ҫ������ʵ�Ի��������Ƶ���Դ��ַ�������������á� | When reporting an issue, include versions, operating system and a redacted error. Do not publish private conversations, token-bearing resource URLs or complete runtime configuration. |

@@ -1,14 +1,10 @@
-# Synthetic example / 合成示例
+# �ϳ�ʾ�� / Synthetic example
 
-这份示例为项目文档人工编写，不来自私人对话。
-
-## 1. 提问
-
-请给出平方函数及一个 Python 示例。
-
-## 2. 回答
-
-平方函数：
+| ���� | English |
+| --- | --- |
+| ���ʾ��Ϊ��Ŀ�ĵ��˹���д��������˽�˶Ի��� | This example was written for project documentation and does not come from a private conversation. |
+| **���ʣ�**�����ƽ��������һ�� Python ʾ���� | **Question:** Show the square function and a Python example. |
+| **�ش�**ƽ���������£���ʽ�ʹ���������˵���й��á� | **Answer:** The square function is shown below; both explanations share the same formula and code. |
 
 $$
 y=x^2
@@ -21,4 +17,6 @@ def square(x):
 print(square(5))
 ```
 
-实际归档会另外生成原件、附件与报告。此示例只展示原生正文；不包含需要外部归档附件的交互引用。
+| ���� | English |
+| --- | --- |
+| ʵ�ʹ鵵��������ԭ���������ͱ��档��ʾ��ֻչʾԭ�����ģ���������Ҫ����鵵�����Ľ������á� | Actual captures also produce source data, assets and reports. This example shows native prose only and has no widget references that require additional archive assets. |
