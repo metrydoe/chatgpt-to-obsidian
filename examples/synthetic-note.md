@@ -1,10 +1,10 @@
-# �ϳ�ʾ�� / Synthetic example
+# 合成示例 / Synthetic example
 
-| ���� | English |
+| 中文 | English |
 | --- | --- |
-| ���ʾ��Ϊ��Ŀ�ĵ��˹���д��������˽�˶Ի��� | This example was written for project documentation and does not come from a private conversation. |
-| **���ʣ�**�����ƽ��������һ�� Python ʾ���� | **Question:** Show the square function and a Python example. |
-| **�ش�**ƽ���������£���ʽ�ʹ���������˵���й��á� | **Answer:** The square function is shown below; both explanations share the same formula and code. |
+| 这份示例为项目文档人工编写，不来自私人对话。 | This example was written for project documentation and does not come from a private conversation. |
+| **提问：**请给出平方函数和一个 Python 示例。 | **Question:** Show the square function and a Python example. |
+| **回答：**平方函数如下，公式和代码在两种说明中共用。 | **Answer:** The square function is shown below; both explanations share the same formula and code. |
 
 $$
 y=x^2
@@ -17,6 +17,6 @@ def square(x):
 print(square(5))
 ```
 
-| ���� | English |
+| 中文 | English |
 | --- | --- |
-| ʵ�ʹ鵵��������ԭ���������ͱ��档��ʾ��ֻչʾԭ�����ģ���������Ҫ����鵵�����Ľ������á� | Actual captures also produce source data, assets and reports. This example shows native prose only and has no widget references that require additional archive assets. |
+| 实际归档还会生成原件、附件和报告。本示例只展示原生正文，不包含需要额外归档附件的交互引用。 | Actual captures also produce source data, assets and reports. This example shows native prose only and has no widget references that require additional archive assets. |

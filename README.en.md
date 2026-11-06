@@ -1,6 +1,6 @@
-# ChatGPT �� Obsidian
+# ChatGPT → Obsidian
 
-[��Ӣ���� / Bilingual README](README.md) �� [Installation](docs/INSTALL.md) �� [Architecture](docs/ARCHITECTURE.md) �� [Contributing](CONTRIBUTING.md)
+[中英对照 / Bilingual README](README.md) · [Installation](docs/INSTALL.md) · [Architecture](docs/ARCHITECTURE.md) · [Contributing](CONTRIBUTING.md)
 
 ## Overview
 
@@ -36,11 +36,11 @@ Provide a converter for older whole-note player exports; preview by default and 
 python install.py --vault 'D:\Notes\MyVault'
 ```
 
-**3.** Open `chrome://extensions/`, enable **Developer mode**, choose **Load unpacked**, and select the project��s **`extension`** subdirectory.
+**3.** Open `chrome://extensions/`, enable **Developer mode**, choose **Load unpacked**, and select the project’s **`extension`** subdirectory.
 
-**4.** Enable **ChatGPT Learning Widgets** in Obsidian��s **Settings �� Community plugins**.
+**4.** Enable **ChatGPT Learning Widgets** in Obsidian’s **Settings → Community plugins**.
 
-**5.** Open a specific ChatGPT conversation, click the extension, verify the connected vault name, then click **�鵵�� Obsidian** (*Archive to Obsidian*). Load earlier messages for long chats and keep the popup open while archiving.
+**5.** Open a specific ChatGPT conversation, click the extension, verify the connected vault name, then click **归档到 Obsidian** (*Archive to Obsidian*). Load earlier messages for long chats and keep the popup open while archiving.
 
 The current extension interface and generated filenames use Chinese. See the bilingual [installation guide](docs/INSTALL.md) for setup, updates, vault changes and troubleshooting. The extension and plugin are not listed in application stores.
 
@@ -58,7 +58,7 @@ Do not publish `host/config.json`, `host/recovery/`, `recovery/`, `backups/`, `d
 
 ## Known limitations
 
-Capture covers loaded content in the current branch, not all account history. Changes to ChatGPT��s page structure may break capture.
+Capture covers loaded content in the current branch, not all account history. Changes to ChatGPT’s page structure may break capture.
 
 Identical appearance and complete migration of arbitrary JavaScript, iframes or canvas behavior are not guaranteed.
 
