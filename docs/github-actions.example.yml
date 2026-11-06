@@ -1,0 +1,25 @@
+# Optional example: copy to .github/workflows/ci.yml to enable GitHub Actions.
+name: Checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check sources and generated bundle
+        run: python tools/check.py
+      - name: Run synthetic regression tests
+        run: python -m unittest discover -s tests -v

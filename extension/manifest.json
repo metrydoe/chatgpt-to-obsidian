@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT → Obsidian",
+  "version": "0.8.2",
+  "description": "将聊天保存为可编辑笔记，保留公式、代码、本地图片及原位交互组件。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "nativeMessaging"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "归档到 Obsidian"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnLWHcqemLv+AM2DYMyWEYF8yEK2cDyG3Iz3e5GbP5XGO+38H/x8lqqDX7kRfntr6npValMuWfpKpLGxZ66ndMfBWgo8LioGspkLDk1Kw6VKxhffZKENlRFcLnX34E3ECLOe+M+V7Kd8K1/SPwBSlhXouATqrbe3DO/hE5iVZDGjj7pMWcub/xpk5lonIGwy4oJU1yjOJfO1VTW7QKWJHgWjg0b0K4olPaFE/yWMezSvYHCES9hN1bkXHT3oc7tY6STX7uE0SukQBW489S4nAVeT4eX1tniH89QCB/U6jZDrPTIJhqTQTc2nT4saIr7N6j6ZKFGBvHtnaSI10m2hHOQIDAQAB",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://*.oaiusercontent.com/*",
+    "https://*.oaistatic.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ]
+}

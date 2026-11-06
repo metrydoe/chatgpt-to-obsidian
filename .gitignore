@@ -1,0 +1,27 @@
+# Machine-specific configuration and generated launchers
+/host/config.json
+/host/native-host.json
+/host/launch.cmd
+/installation-result.json
+/page-structure-diagnostic.json
+/backups/
+/recovery/
+/host/recovery/
+**/data.json
+**/__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.crx
+*.log
+*.tmp
+/dist/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

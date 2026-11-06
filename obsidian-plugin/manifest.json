@@ -1,0 +1,9 @@
+{
+  "id": "chatgpt-learning-widgets",
+  "name": "ChatGPT Learning Widgets",
+  "version": "0.5.1",
+  "minAppVersion": "1.5.0",
+  "description": "原生笔记中的共享状态交互组件，兼容旧版归档。",
+  "author": "Local learning tools",
+  "isDesktopOnly": false
+}

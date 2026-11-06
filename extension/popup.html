@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><link rel="stylesheet" href="popup.css"></head>
+<body><main>
+<div class="eyebrow">学习归档 · 本地保存 · <span id="version">v0.4.0</span></div>
+<h1>带着理解，存进笔记。</h1>
+<p>打开一条 ChatGPT 教学对话，将已加载的问答、公式和配图一起保存。</p>
+<div id="connection" class="connection">正在检查本地接收程序…</div>
+<button id="save" disabled>归档到 Obsidian</button>
+<button id="grant-images" hidden style="margin-top:10px">允许图片网站并归档</button>
+<p id="image-sites" class="hint" hidden></p>
+<p class="hint">长对话请先滚动到顶部，等待早期消息加载。代码会优先读取完整文档，必要时自动滚动；无法确认完整时停止保存并留下诊断。归档期间请保持此窗口打开。</p>
+<section id="result" hidden><strong id="summary"></strong><div id="details"></div><a id="open" hidden>在 Obsidian 中打开</a></section>
+<details><summary>本次会保存什么？</summary><p>保存网页已加载的当前对话分支，不读取账号数据库。无法取得的图片会列入报告。交互式图形和 iframe 不保证可导出。</p></details>
+</main><script src="dil-archive.js"></script><script src="runtime-client.js"></script><script src="popup.js"></script></body></html>
